@@ -1,0 +1,36 @@
+{% load static menu_tags %}
+
+{% get_menu "header" as navigation %}
+
+<footer class="bg-dark py-4 text-light text-md-left text-center cc-footer">
+  <div class="container">
+    <div class="row mx-lg-n3">
+      <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12">
+        <div class="cc-footer-title">Links</div>
+        {% for item in navigation.menu_items.all %}
+            <a class="cc-footer-link-lg d-block" href="{{ item.link }}" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
+              {{ item.title }}
+            </a>
+          {% endfor %}
+      </div>
+      <div class="px-lg-3 col-lg-3 col-md-6 col-sm-12">
+        <a href="@todo" class="cc-footer-social-icon">
+          <img src="{% static 'images/facebook.svg' %}" alt="Facebook">
+        </a>
+        <a href="@todo" class="cc-footer-social-icon">
+          <img src="{% static 'images/twitter.svg' %}" alt="Twitter">
+        </a>
+        <a href="@todo" class="cc-footer-social-icon">
+         <img src="{% static 'images/instagram.svg' %}" alt="Instagram">
+        </a>
+        <a
+          href="{{ settings.site_settings.SocialMediaSettings.youtube }}"
+          class="cc-footer-social-icon"
+        >
+         <img src="{% static 'images/youtube.svg' %}" alt="YouTube">
+        </a>
+        <div class="cc-footer-copy">&copy; {% now "Y" %} Rocketman</div>
+      </div>
+    </div>
+  </div>
+</footer>
